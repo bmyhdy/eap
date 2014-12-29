@@ -4,10 +4,26 @@ var ContentData = {
     "title":"预付款冲正",
     "items":[{
         "type":"input",
+        "label":"主键",
+        "column":6,
+        "isRequired":true,
+        "key":"index",
+        "list_show":true,
+        "card_show":true,
+        "isHidden":true,
+        "isPkCode":true,
+        "list_hidden_data":true
+    },{
+        "type":"input",
         "label":"标题",
         "column":6,
         "isRequired":true,
-        "key":"title"
+        "key":"title",
+        "list_show":true,
+        "card_show":true,
+        "isHidden":false,
+        "isListUrl":true,
+        "list_hidden_data":false
     },{
         "type":"select",
         "label":"类型",
@@ -15,7 +31,23 @@ var ContentData = {
         "isRequired":false,
         "key":"type",
         "dict":"type_dict",
-        "default":"dd"
+        "default":"dd",
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
+    },{
+        "type":"select",
+        "label":"允许",
+        "column":3,
+        "isRequired":false,
+        "key":"yes_no",
+        "dict":"exit_type",
+        "default":"y",
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
     },{
         "type":"radio",
         "label":"是否",
@@ -24,47 +56,61 @@ var ContentData = {
         "key":"is_exit",
         "dict":"exit_type",
         "default":"y",
-        //"style":"default",
-        "style":"popular",
-        "icon":"default"
-        //"icon":"primary"
-    },{
-        "type":"input",
-        "label":"年龄",
-        "column":3,
-        "isRequired":true,
-        "key":"age"
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
     },{
         "type":"input",
         "label":"名字",
         "column":3,
         "isRequired":true,
-        "key":"name"
+        "key":"name",
+        "list_show":true,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
+    },{
+        "type":"input",
+        "label":"年龄",
+        "column":3,
+        "isRequired":true,
+        "key":"age",
+        "list_show":true,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
     },{
         "type":"input",
         "label":"地址",
         "column":3,
         "isRequired":true,
-        "key":"addre"
+        "key":"addre",
+        "list_show":true,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
     },{
         "type":"input",
         "label":"金额",
         "column":2,
         "isRequired":false,
-        "key":"money"
+        "key":"money",
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
     },{
         "type":"input",
         "label":"个数",
         "column":2,
         "isRequired":false,
-        "key":"count"
-    },/*{
-        "type":"input",
-        "label":"单价",
-        "column":2,
-        "isRequired":false,
-        "key":"price"
-    },*/{
+        "key":"count",
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":false
+    },{
         "type":"checkbox",
         "label":"选择类型",
         "column":2,
@@ -72,16 +118,39 @@ var ContentData = {
         "key":"check_type",
         "dict":"type_dict",
         "default":"dd",
-        //"style":"default",
-        "style":"popular",
-        "icon":"default"
-        //"icon":"primary"
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":true
     },{
         "type":"textarea",
         "label":"备注",
         "column":6,
         "isRequired":false,
-        "key":"memo"
+        "key":"memo",
+        "list_show":false,
+        "card_show":true,
+        "isHidden":false,
+        "list_hidden_data":true
+    }],
+    "dataList":[{
+        "index":"23121231313131323",
+        "title":"关于…………的请示---1",
+        "name":"张三",
+        "age":"24",
+        "addre":"河南"
+    },{
+        "index":"45645654646464646",
+        "title":"关于…………的请示---2",
+        "name":"李四",
+        "age":"25",
+        "addre":"河北"
+    },{
+        "index":"78968975675757576",
+        "title":"关于…………的请示---3",
+        "name":"王二",
+        "age":"26",
+        "addre":"北京"
     }],
     "dicts":[{
         "key":"type_dict",
@@ -104,11 +173,29 @@ var ContentData = {
         "type":"list",
         "group":"default"
     },{
-        "key":"modify",
+        "key":"save",
         "icon":"floppy-disk",
         "value":"保存",
         "type":"card",
         "group":"default"
+    },{
+        "key":"modify",
+        "icon":"remove",
+        "value":"关闭",
+        "type":"card",
+        "group":"default"
+    },{
+        "key":"modify",
+        "icon":"share-alt",
+        "value":"撤销",
+        "type":"card",
+        "group":"default"
+    },{
+        "key":"modify",
+        "icon":"paperclip",
+        "value":"附件",
+        "type":"card",
+        "group":"file"
     },{
         "key":"drop",
         "icon":"minus",
@@ -150,6 +237,7 @@ var ContentConfig = {
                     "default":"default",
                     "search":"search",
                     "exp":"exp",
+                    "file":"file",
                     "other":"other"
                 }
             },
@@ -158,18 +246,6 @@ var ContentConfig = {
             },
             "getListConfig":function() {
                 return "list";
-            },
-            "getRadioStyles":function() {
-                return {
-                    "popular" : "popular",
-                    "default" : "default"
-                }
-            },
-            "getCheckBoxStyles":function() {
-                return {
-                    "popular" : "popular",
-                    "default" : "default"
-                }
             }
         };
     }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>test-2.0</title>
+    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap2/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap2/css/bootstrap-responsive.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/eap.css">
+</head>
+<body>
+    <div>
+        <label class="radio inline">
+            <input type="radio" value="1" name="aa"><span>男</span>
+        </label>
+        <label class="radio inline">
+            <input type="radio" value="2" name="aa"><span>女</span>
+        </label>
+
+        <label><input type="checkbox" value="1" name="bb">a</label>
+        <label><input type="checkbox" value="2" name="bb">b</label>
+
+        <a href="javascript:check();">cc</a>
+
+        <input type="text" value=""class="">
+    </div>
+    <script type="text/javascript" src="../plug-in/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../plug-in/bootstrap2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plug-in/layer/layer.min.js"></script>
+    <script type="text/javascript" src="../engines/tools/eap-tools.js"></script>
+    <script type="text/javascript" src="../content/eap-content.js"></script>
+    <script type="text/javascript" src="../engines/ui/eap.ui.card.js"></script>
+    <script type="text/javascript">
+        //jQuery("input[type='radio']").attr("checked","1");
+        jQuery("input[name='aa'][value='2']").attr("checked",true);
+        jQuery("input[name='bb']").attr("checked", true);
+        function check() {
+            jQuery("input[name='bb']:checked").each(function(){
+                alert(jQuery(this).val());
+            });
+        }
+    </script>
+</body>
+</html>

@@ -36,7 +36,20 @@
         <script type="text/javascript" src="../engines/ui/eap.ui.card.js"></script>
         <script type="text/javascript" src="../engines/vi/eap.vi.cardView.js"></script>
         <script type="text/javascript">
-            var dataObj = {};
+            var dataObj = {
+               "index":"121213123123",
+                "title":"关于………………的请示",
+                "type":"dd",
+                "yes_no":"y",
+                "is_exit":"y",
+                "name":"张三",
+                "age":"24",
+                "addre":"昌平",
+                "money":50,
+                "count":100,
+                "check_type":"dd",
+                "memo":"终于完成了"
+            };
             new eap.vi.Card(ContentData, jQuery("div[id='card_container']"), jQuery("div[id='card_btn_bar']"), dataObj);
         </script>
     </body>

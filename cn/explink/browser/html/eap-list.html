@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>list</title>
-    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap3/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap3/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap2/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../plug-in/bootstrap2/css/bootstrap-responsive.min.css">
     <link type="text/css" rel="stylesheet" href="../css/eap.css">
 </head>
 <body class="eap-body">
@@ -13,16 +13,65 @@
             <h3 class="panel-title">Hello, This is a List</h3>
         </div>
         <div class="panel-body">
-            <table class="table table-bordered">
-                <tr><th>姓名</th><th>年龄</th></tr>
-                <tr><td>何</td><td>24</td></tr>
-            </table>
+            <div class="panel panel-default" id="grid_container">
+                <div class="panel-body">
+                    <div class="btn-toolbar" id="list_btn_bar"></div>
+                    <div class="panel-default">
+                        <table class="table table-striped table-bordered table-hover table-condensed grid-table" id="list_container">
+                        </table>
+                    </div>
+                    <div class="panel-default" id="page_container">
+                        <div class="pagination pagination-centered">
+                            <ul>
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">…</a></li>
+                                <li><a href="#">7</a></li>
+                                <li><a href="#">8</a></li>
+                                <li><a href="#">9</a></li>
+                                <li><a href="#">尾页</a></li>
+                                <li>
+                                    <div class="input-append" style="margin-left: 25px;">
+                                        <input id="grid_goto" type="text" value="" style="width: 35px;" placeholder="goto">
+                                        <button class="btn" type="button">GO</button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="input-prepend input-append" style="margin-left: 25px;">
+                                        <span class="add-on">每页显示</span>
+                                        <select name="-" style="width: 65px;">
+                                            <option value="5">10</option>
+                                            <option value="5">20</option>
+                                            <option value="5">50</option>
+                                            <option value="5">100</option>
+                                        </select>
+                                       <span class="add-on">条</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-default" id="page_count_container">
+                        <div style="text-align: right;">
+                            <span style="font-weight: 700;">共100条</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="../plug-in/jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../plug-in/bootstrap3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plug-in/bootstrap2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../plug-in/layer/layer.min.js"></script>
     <script type="text/javascript" src="../content/eap-content.js"></script>
     <script type="text/javascript" src="../engines/tools/eap-tools.js"></script>
+    <script type="text/javascript" src="../engines/ui/eap.ui.grid.js"></script>
+    <script type="text/javascript" src="../engines/vi/eap.vi.listView.js"></script>
+    <script type="text/javascript">
+        new eap.vi.List(ContentData, jQuery("div[id='grid_container']"), jQuery("div[id='list_btn_bar']"),
+                jQuery("table[id='list_container']"), jQuery("div[id='page_container']"), jQuery("div[id='page_count_container']"));
+    </script>
 </body>
 </html>
